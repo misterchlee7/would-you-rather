@@ -7,6 +7,7 @@ import NavBar from './NavBar';
 import Login from './Login';
 import Dashboard from './Dashboard';
 import LeaderBoard from './LeaderBoard';
+import AddQuestion from './AddQuestion';
 
 class App extends Component {
   componentDidMount() {
@@ -20,7 +21,7 @@ class App extends Component {
 
     return (
       <Router>
-        <NavBar />
+        <NavBar isAuthed={isAuthed} />
         <Route path='/' exact render={() => (
           isAuthed
           ? <Dashboard />
@@ -28,6 +29,11 @@ class App extends Component {
         )} />
         <Route path='/login' component={Login} />
         <Route path='/leaderboard' component={LeaderBoard} />
+        <Route path='/add' exact render={() => (
+          isAuthed
+            ? <AddQuestion />
+            : <Redirect to='/login' />
+        )} />
       </Router>
     );
   }
