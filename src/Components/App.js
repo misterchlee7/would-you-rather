@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { handleInitialData } from '../actions/shared';
 import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 
 import NavBar from './NavBar';
@@ -10,12 +9,6 @@ import LeaderBoard from './LeaderBoard';
 import AddQuestion from './AddQuestion';
 
 class App extends Component {
-  componentDidMount() {
-    // const { dispatch } = this.props;
-
-    // dispatch(handleInitialData());
-  }
-
   render() {
     const { isAuthed } = this.props;
 

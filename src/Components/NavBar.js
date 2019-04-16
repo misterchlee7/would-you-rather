@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { SET_AUTHED_USER } from '../actions/authedUser';
 
 class NavBar extends Component {
   render() {
     const { isAuthed } = this.props;
 
     const loginLogoutButton = isAuthed
-      ? <NavLink to='/'>Logout</NavLink>
+      ? <NavLink to='/' onClick={this.props.logout}>Logout</NavLink>
       : <NavLink to='/login'>Login</NavLink>
+
+    const greeting = isAuthed
+      ? <div><img src={this.props.users[this.props.authUser].avatarURL} alt='profile' />Welcome {this.props.authUser}</div>
+      : null
 
     return (
       <nav>
@@ -24,10 +30,22 @@ class NavBar extends Component {
           <li>
             {loginLogoutButton}
           </li>
+          <li>
+            {greeting}
+          </li>
         </ul>
       </nav>
     );
   }
 }
 
-export default NavBar;
+const mapStateToProps = ({ authedUser, users }) => ({
+  authUser: authedUser,
+  users,
+})
+
+const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch({ type: SET_AUTHED_USER, id: null })
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(NavBar);
