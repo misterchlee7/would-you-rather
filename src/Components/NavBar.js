@@ -12,7 +12,7 @@ class NavBar extends Component {
       : <NavLink to='/login'>Login</NavLink>
 
     const greeting = isAuthed
-      ? <div><img src={this.props.users[this.props.authUser].avatarURL} alt='profile' />Welcome {this.props.authUser}</div>
+      ? <div><img src={this.props.users[this.props.authUser].avatarURL} alt='profile' width='100' height='100' />Welcome {this.props.authUser}</div>
       : null
 
     return (

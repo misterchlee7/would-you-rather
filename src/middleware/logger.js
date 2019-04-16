@@ -1,7 +1,7 @@
 const logger = store => next => action => {
   console.group(action.type);
-  console.log('The action: ', action)
-  console.log('The new state: ', store.getState())
+  new Promise(resolve => resolve(console.log("The action: ", action)))
+    .then(() => console.log('The new state: ', store.getState()))
   console.groupEnd();
   return next(action);
 }

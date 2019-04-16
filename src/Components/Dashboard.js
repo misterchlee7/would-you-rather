@@ -21,7 +21,7 @@ class Dashboard extends Component {
         )})
 
     return (
-      <div>
+      <div className='question-list'>
         Dashboard
         {questionList}
       </div>

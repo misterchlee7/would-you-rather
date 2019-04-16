@@ -12,3 +12,64 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.question-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.question-block {
+  margin: 20px auto;
+  width: 80%;
+  box-sizing: border-box;
+  border: 0.5px solid grey;
+  background-color: #D9F0FF;
+  box-shadow: 15px 17px 10px 0px rgba(0,0,0,0.75);
+}
+
+.question-block > header {
+  background-color: #6F73D2;
+  font-size: 1.5em;
+  font-style: italic;
+  font-weight: bolder;
+  margin-left: 1em;
+  padding-left: 1em;
+}
+
+.question {
+  display: flex;
+}
+
+.question > img {
+  border-right: 1px solid lightslategray;
+  margin-right: 25px;
+}
+
+.choices > h4 {
+  margin: 0 0;
+}
+
+.choices {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding-bottom: 10px;
+}
+
+.choices button:nth-child(2) {
+  background-color: #7681B3;
+  margin-left: 15px;
+  font-size: 1em;
+  color: white;
+  padding: 5px;
+  border: 0;
+}
+
+.choices button:nth-child(3) {
+  background-color: #78B7DE;
+  margin-left: 15px;
+  font-size: 1em;
+  color: white;
+  padding: 5px;
+  border: 0;
+}
