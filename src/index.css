@@ -13,6 +13,8 @@ code {
     monospace;
 }
 
+/* Question Component */
+
 .question-list {
   display: flex;
   flex-direction: column;
@@ -72,4 +74,25 @@ code {
   color: white;
   padding: 5px;
   border: 0;
+}
+
+/* NavBar Component */
+
+#navbar {
+  background-color: #D9F0FF;
+  max-width: 900px;
+}
+
+#navbar > ul {
+  margin: 0;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  list-style-type: none;
+}
+
+#navbar a {
+  margin-left: -20px;
+  text-decoration: none;
 }
