@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleReceiveQuestions } from '../actions/questions';
 
-import Question from './Question';
+import QuestionList from './QuestionList';
 
 class Dashboard extends Component {
   componentDidMount() {
@@ -12,13 +12,10 @@ class Dashboard extends Component {
   render() { 
     const questionList = this.props.questionList.length === 0
       ? <div>Loading...</div>
-      : this.props.questionList.map(q => {
-        return (
-          <Question
-            key={q}
-            asker={this.props.users[this.props.questions[q].author]}
-            question={this.props.questions[q]} />
-        )})
+      : <QuestionList 
+          questionList={this.props.questionList}
+          questions={this.props.questions}
+          users={this.props.users} />
 
     return (
       <div className='question-list'>
