@@ -7,6 +7,7 @@ import Login from './Login';
 import Dashboard from './Dashboard';
 import LeaderBoard from './LeaderBoard';
 import AddQuestion from './AddQuestion';
+import Result from './Result';
 
 class App extends Component {
   render() {
@@ -19,6 +20,11 @@ class App extends Component {
           isAuthed
           ? <Dashboard />
           : <Redirect to='/login' />
+        )} />
+        <Route path='/result/:id' render={ () => (
+          isAuthed
+            ? <Result />
+            : <Redirect to='/login' />
         )} />
         <Route path='/login' component={Login} />
         <Route path='/leaderboard' component={LeaderBoard} />
