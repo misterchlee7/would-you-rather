@@ -21,7 +21,7 @@ class App extends Component {
           ? <Dashboard />
           : <Redirect to='/login' />
         )} />
-        <Route path='/result/:id' render={ () => (
+        <Route path='/result/id/:id' render={ () => (
           isAuthed
             ? <Result />
             : <Redirect to='/login' />

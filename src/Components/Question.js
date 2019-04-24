@@ -1,12 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { handleAnswerQuestion } from '../actions/shared';
+import { withRouter } from 'react-router-dom';
 
 class Question extends Component {
   handleClick = async (e) => {
     const { answerQuestion, authUser, qid } = this.props;
     const answer = e.target.value;
     await answerQuestion(authUser, qid, answer);
+    this.props.history.push({
+      pathname: `/result/id/${qid}`,
+      state: {
+        user: this.props.asker,
+        question: this.props.question,
+        totalVotes: this.props.totalVotes,
+        userChoice: answer,
+      },
+    });
   }
 
   render() {
@@ -36,13 +46,16 @@ class Question extends Component {
   }
 }
 
-const mapStateToProps = ({ authedUser }, { question }) => ({
+const mapStateToProps = ({ authedUser, users }, { question }) => ({
   authUser: authedUser,
   qid: question.id,
+  asker: users[question.author],
+  question: question,
+  totalVotes: question.optionOne.votes.length + question.optionTwo.votes.length,
 });
 
 const mapDispatchToProps = dispatch => ({
   answerQuestion: (authUser, qid, answer) => dispatch(handleAnswerQuestion(authUser, qid, answer)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Question);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Question));
